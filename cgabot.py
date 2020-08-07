@@ -6,6 +6,7 @@ import time
 import sys
 import pandas as pd
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import ticker
 from matplotlib.ticker import StrMethodFormatter, NullFormatter
@@ -13,7 +14,9 @@ from pandas.plotting import register_matplotlib_converters
 import io
 from config import settings
 
+matplotlib.use('Agg')
 register_matplotlib_converters()
+
 devMode = False
 TOKEN = settings["TEST_TOKEN"]
 TOKEN_DEPLOY=settings["TOKEN"]
