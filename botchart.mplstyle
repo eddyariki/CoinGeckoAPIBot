@@ -1,0 +1,18 @@
+axes.facecolor: 001212
+axes.edgecolor: 003636
+axes.grid: true
+
+text.color: 6ce6d1
+xtick.color: 24f2cc
+xtick.major.size: 1.0
+xtick.labelsize: 10
+ytick.color: 24f2cc
+ytick.major.size:1.0
+grid.color: 008c78
+lines.color: 30f0e3
+lines.linewidth: 1.0
+lines.marker:1
+lines.markeredgecolor: ffd500
+lines.markerfacecolor: ffd500
+savefig.facecolor: black
+savefig.edgecolor: ff006f
