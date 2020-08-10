@@ -130,7 +130,7 @@ def get_chart(range_from_,coin_symbol="",currency="btc"):
 
     range_to = int(time.time())
     range_from = range_to - time_value
-    if(currency!="btc" and coin_symbol !="btc" and currency!="eth"):
+    if(currency!="btc" or coin_symbol == "btc" and currency!="eth"):
         currency="usd"
     elif(currency == "eth"):
     	currency="eth"
@@ -195,6 +195,11 @@ def get_chart(range_from_,coin_symbol="",currency="btc"):
         	label.set_rotation(45)
 
         if(currency=="btc"):
+        	if(digits/10>1):
+        		ax.text(df.at[df.index[-1],'time'], df.at[df.index[-1],'price'],' {:,.2f}'.format(df.at[df.index[-1],'price'])+currency, color="#ffb700",fontsize='10',va='top', ha='left')
+        	else:
+        		ax.text(df.at[df.index[-1],'time'], df.at[df.index[-1],'price'],' {:,.8f}'.format(df.at[df.index[-1],'price'])+currency, color="#ffb700",fontsize='10',va='top', ha='left')
+        elif(currency=="eth"):
         	if(digits/10>1):
         		ax.text(df.at[df.index[-1],'time'], df.at[df.index[-1],'price'],' {:,.2f}'.format(df.at[df.index[-1],'price'])+currency, color="#ffb700",fontsize='10',va='top', ha='left')
         	else:
@@ -612,7 +617,7 @@ def chart(message):
 		three = False
 		symbol=""
 		if(len(query)==1 or len(query)==2 and memory_data[0][f"{message.chat.id}"]["coin"]!=""):
-			if(len(query)==2):
+			if(len(query)==2 and any(char.isdigit() for char in query[1])):
 				query=["",memory_data[0][f"{message.chat.id}"]["coin"],query[1]]
 				symbol=memory_data[0][f"{message.chat.id}"]["symbol"]
 				valid = True
